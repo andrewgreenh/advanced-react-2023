@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="./README.css">
-<script src="./README.js"></script>
-
 # Advanced React in 2023
 
 - [Introduction](#introduction)
@@ -59,6 +56,9 @@
 
 ### TypeScript in React
 
+- TypeScript is a super set of JavaScript that adds static types
+- No need to define classes or interfaces all over the place
+
 #### 💪 First steps with TypeScript
 
 ### Relearn the principles of React
@@ -98,3 +98,6 @@ Bugfixing exercise
 - Mutations of state
 - Side effects in render
 - Error-case not handled
+
+<link rel="stylesheet" href="./README.css">
+<script src="./README.js"></script>
