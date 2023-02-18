@@ -1,5 +1,5 @@
 import { Link, RouteObject } from "react-router-dom";
-import { exercises } from "../exercises/routes";
+import { exercises } from "../exercises/exercises";
 
 export const homeRoute: RouteObject = {
   path: "/",

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Outlet, RouteObject } from "react-router-dom";
 import { FirstStepsWithTypeScript } from "./01-first-steps-with-typescript/FirstStepsWithTypeScript";
+import { FixTheRuleBreaks } from "./02-fix-the-rule-breaks/FixTheRuleBreaks";
 import { ExerciseWrapper } from "./ExerciseWrapper";
 
 export const exercises = defineExercises([
@@ -9,8 +10,8 @@ export const exercises = defineExercises([
     element: <FirstStepsWithTypeScript />,
   },
   {
-    title: "What about this?",
-    element: <FirstStepsWithTypeScript />,
+    title: "Fix the rule breaks",
+    element: <FixTheRuleBreaks />,
   },
 ]);
 
@@ -32,9 +33,7 @@ type ExerciseDefinition = {
   element: ReactNode;
 };
 
-function defineExercises(
-  exerciseDefinition: ExerciseDefinition[]
-) {
+function defineExercises(exerciseDefinition: ExerciseDefinition[]) {
   return exerciseDefinition.map((e, i) => ({
     ...e,
     key: `${(i + 1).toString().padStart(2, "0")}`,

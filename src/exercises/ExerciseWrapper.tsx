@@ -1,9 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-export function ExerciseWrapper(props: {
-  children: ReactNode;
-}) {
+export function ExerciseWrapper(props: { children: ReactNode }) {
   return (
     <>
       <Link
@@ -12,7 +10,7 @@ export function ExerciseWrapper(props: {
       >
         🏠
       </Link>
-      {props.children}
+      <div className="p-8">{props.children}</div>
     </>
   );
 }

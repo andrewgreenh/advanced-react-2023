@@ -54,12 +54,16 @@
 <ul>
 <li><a href="#typescript-in-react">TypeScript in React</a>
 <ul>
-<li><a href="#-first-steps-with-typescript">💪 First steps with TypeScript</a></li>
+<li><a href="#-01-first-steps-with-typescript">💪 01 First steps with TypeScript</a></li>
 </ul>
 </li>
 <li><a href="#relearn-the-principles-of-react">Relearn the principles of React</a>
 <ul>
-<li><a href="#the-rules-of-react">The rules of React</a></li>
+<li><a href="#the-rules-of-react">The rules of React</a>
+<ul>
+<li><a href="#-02-fix-the-rule-breaks">💪 02 Fix the rule breaks</a></li>
+</ul>
+</li>
 <li><a href="#state-in-react">State in React</a></li>
 <li><a href="#useeffect-usememo--usecallback">useEffect, useMemo &amp; useCallback</a></li>
 <li><a href="#imperative-apis-in-react">Imperative APIs in React</a></li>
@@ -123,10 +127,45 @@
 <li>TypeScript is a super set of JavaScript that adds static types</li>
 <li>No need to define classes or interfaces all over the place</li>
 </ul>
-<h4 id="-first-steps-with-typescript">💪 First steps with TypeScript</h4>
+<h4 id="-01-first-steps-with-typescript">💪 01 First steps with TypeScript</h4>
+<p>Open <code>src/exercises/01-first-steps-with-typescript/FirstStepsWithTypeScript.tsx</code></p>
+<p><strong>Part 1</strong></p>
+<ul>
+<li>Create a new component <code>SimpleCounterButton</code>. This component should:
+<ul>
+<li>Render a button that starts with the number 10</li>
+<li>When clicking on the button, the counter should be incremented by 1</li>
+<li>Display the current count on the button</li>
+</ul>
+</li>
+<li>Render the button in the FirstStepsWithTypeScript component.</li>
+<li>Make sure, that <code>npm run test</code> run without any errors or warnings.</li>
+</ul>
+<p><strong>Part 2</strong></p>
+<ul>
+<li>The SimpleCounterButton should receive a prop &quot;incrementBy&quot;. Users of our component should be able to pass in a number that changes the incrmenetation amount. (Instead of always incrementing by 1, the counter should increment by <code>incrementBy</code> on every click)</li>
+<li>Users of our component should additionally be able to pass in a <code>style</code> object, that will be forwarded to the <code>style</code>-prop of the <code>button</code> element that is rendered within the SimpleCounterButton. Example: <code>&lt;SimpleCounterButton incrementBy={5} style={{ border: 10px solid blue }} /&gt;</code> should render a button with a thick blue border.</li>
+</ul>
+<p><strong>Part 3</strong></p>
+<ul>
+<li>Create a new component <code>RandomNumbers</code>, that displays a new random number every 5 seconds. For the first 5 seconds, a text <code>Generating a new number</code> should be displayed, which is then replaced by the first random number after 5 seconds.</li>
+<li>Render the component next to the SimpleCounterButton.</li>
+</ul>
 <h3 id="relearn-the-principles-of-react">Relearn the principles of React</h3>
+<p>Goal: Understand React instead of just using React</p>
 <h4 id="the-rules-of-react">The rules of React</h4>
-<p>Bugfixing exercise</p>
+<ul>
+<li>Render functions must be pure</li>
+<li>Everything created connection to the outside world must be destroyed at some point in time</li>
+<li>Don't update data, replace it (immutable updates)</li>
+</ul>
+<h5 id="-02-fix-the-rule-breaks">💪 02 Fix the rule breaks</h5>
+<ul>
+<li>Open <code>src/exercises/02-fix-the-rule-breaks/FixTheRuleBreaks.tsx</code></li>
+<li>Find all the places where one of React's rules is broken</li>
+<li><strong>Before fixing it</strong> try to think of a situation in which this rule break would cause problems</li>
+<li>Fix the rule break</li>
+</ul>
 <h4 id="state-in-react">State in React</h4>
 <ul>
 <li>one source (URL, state, localstorage, etc.)</li>
