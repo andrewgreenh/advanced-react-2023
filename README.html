@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Advanced React in 2023</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <link rel="stylesheet" href="./README.css">
+<script src="./README.js"></script>
+<h1 id="advanced-react-in-2023">Advanced React in 2023</h1>
+<ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#who-am-i">Who am I?</a></li>
+<li><a href="#who-are-you">Who are you?</a></li>
+<li><a href="#before-we-start">Before we start</a></li>
+</ul>
+</li>
+<li><a href="#repository-setup">Repository setup</a></li>
+<li><a href="#topics">Topics</a>
+<ul>
+<li><a href="#typescript-in-react">TypeScript in React</a>
+<ul>
+<li><a href="#-first-steps-with-typescript">💪 First steps with TypeScript</a></li>
+</ul>
+</li>
+<li><a href="#relearn-the-principles-of-react">Relearn the principles of React</a>
+<ul>
+<li><a href="#the-rules-of-react">The rules of React</a></li>
+<li><a href="#state-in-react">State in React</a></li>
+<li><a href="#useeffect-usememo--usecallback">useEffect, useMemo &amp; useCallback</a></li>
+<li><a href="#imperative-apis-in-react">Imperative APIs in React</a></li>
+</ul>
+</li>
+<li><a href="#component-patterns">Component Patterns</a>
+<ul>
+<li><a href="#render-props">Render Props</a></li>
+<li><a href="#compound-components">Compound Components</a></li>
+<li><a href="#the-children-prop">The children prop</a></li>
+</ul>
+</li>
+<li><a href="#additional-topics">Additional topics</a>
+<ul>
+<li><a href="#security-in-react">Security in React</a></li>
+<li><a href="#testing-in-react-applications">Testing in React applications</a></li>
+<li><a href="#common-problems">Common problems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<h3 id="who-am-i">Who am I?</h3>
+<ul>
+<li>Andreas</li>
+<li>Developer, Trainer, Speaker</li>
+<li>Web technologies with main focus on TypeScript &amp; React</li>
+</ul>
+<h3 id="who-are-you">Who are you?</h3>
+<ul>
+<li>Name</li>
+<li>Experience</li>
+<li>Expectations for the workshop</li>
+</ul>
+<h3 id="before-we-start">Before we start</h3>
+<ul>
+<li>Be curious</li>
+<li>Be open</li>
+</ul>
+<h2 id="repository-setup">Repository setup</h2>
+<ul>
+<li>Bundler/dev server: <a href="https://vitejs.dev/">Vite</a></li>
+<li>Styles: <a href="https://tailwindcss.com/">Tailwind CSS</a></li>
+<li>Tools:
+<ul>
+<li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+<li><a href="https://prettier.io/">Prettier</a></li>
+<li><a href="https://eslint.org/">eslint</a> - No checking of codestyle, formatting, and anything TypeScript already checks</li>
+</ul>
+</li>
+<li>Testing:
+<ul>
+<li><a href="https://vitest.dev/">Vitest</a> - like jest but integrates with vite and is much faster</li>
+</ul>
+</li>
+</ul>
+<h2 id="topics">Topics</h2>
+<h3 id="typescript-in-react">TypeScript in React</h3>
+<h4 id="-first-steps-with-typescript">💪 First steps with TypeScript</h4>
+<h3 id="relearn-the-principles-of-react">Relearn the principles of React</h3>
+<h4 id="the-rules-of-react">The rules of React</h4>
+<p>Bugfixing exercise</p>
+<h4 id="state-in-react">State in React</h4>
+<ul>
+<li>one source (URL, state, localstorage, etc.)</li>
+</ul>
+<h4 id="useeffect-usememo--usecallback">useEffect, useMemo &amp; useCallback</h4>
+<h4 id="imperative-apis-in-react">Imperative APIs in React</h4>
+<h3 id="component-patterns">Component Patterns</h3>
+<h4 id="render-props">Render Props</h4>
+<h4 id="compound-components">Compound Components</h4>
+<h4 id="the-children-prop">The children prop</h4>
+<h3 id="additional-topics">Additional topics</h3>
+<h4 id="security-in-react">Security in React</h4>
+<h4 id="testing-in-react-applications">Testing in React applications</h4>
+<h4 id="common-problems">Common problems</h4>
+<ul>
+<li>Too many states</li>
+<li>Too many useEffects</li>
+<li>Missing cleanups</li>
+<li>Missing dependencies</li>
+<li>Mutations of state</li>
+<li>Side effects in render</li>
+<li>Error-case not handled</li>
+</ul>
+
+        
+        
+    </body>
+    </html>
