@@ -18,9 +18,7 @@ function UserManagement(props: { initialUsers: User[] }) {
 
   useEffect(() => {
     document.addEventListener("click", () => {
-      setUsers((users) =>
-        [...users].sort(() => (Math.random() < 0.5 ? -1 : 1))
-      );
+      setUsers((users) => faker.helpers.shuffle([...users]));
     });
   }, []);
 
@@ -50,8 +48,8 @@ function UserManagement(props: { initialUsers: User[] }) {
     <>
       <button onClick={addUser}>Add user</button>
       <ul>
-        {users.map((user) => (
-          <li key={user.id} className="flex gap-4">
+        {users.map((user, index) => (
+          <li key={index} className="flex gap-4">
             <User user={user} />
 
             <button

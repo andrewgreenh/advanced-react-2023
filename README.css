@@ -65,7 +65,7 @@ a {
   color: rgb(0, 225, 255);
 }
 
-pre {
+.vscode-light pre {
   background: rgb(0, 0, 0);
   page-break-inside: avoid;
 }

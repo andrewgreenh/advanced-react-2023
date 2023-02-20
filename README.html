@@ -64,23 +64,49 @@
 <li><a href="#-02-fix-the-rule-breaks">💪 02 Fix the rule breaks</a></li>
 </ul>
 </li>
-<li><a href="#state-in-react">State in React</a></li>
-<li><a href="#useeffect-usememo--usecallback">useEffect, useMemo &amp; useCallback</a></li>
-<li><a href="#imperative-apis-in-react">Imperative APIs in React</a></li>
+<li><a href="#state-in-react">State in React</a>
+<ul>
+<li><a href="#-03-impossible-state">💪 03 Impossible state</a></li>
+<li><a href="#-04-explicit-states">💪 04 Explicit states</a></li>
+</ul>
+</li>
+<li><a href="#useeffect-usememo--usecallback">useEffect, useMemo &amp; useCallback</a>
+<ul>
+<li><a href="#-05-unnecessary-useeffects">💪 05 Unnecessary useEffects</a></li>
+<li><a href="#-06-sync-with-the-outside-world">💪 06 Sync with the outside world</a></li>
+<li><a href="#-07-fighting-dependencies">💪 07 Fighting dependencies</a></li>
+</ul>
+</li>
+<li><a href="#imperative-apis-in-react">Imperative APIs in React</a>
+<ul>
+<li><a href="#-imperative-apis">💪 Imperative APIs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#component-patterns">Component Patterns</a>
 <ul>
-<li><a href="#render-props">Render Props</a></li>
-<li><a href="#compound-components">Compound Components</a></li>
-<li><a href="#the-children-prop">The children prop</a></li>
+<li><a href="#the-children-prop-or-jsx-as-props">The children prop or JSX as props</a>
+<ul>
+<li><a href="#-layout-components">💪 Layout-components</a></li>
+</ul>
+</li>
+<li><a href="#render-props">Render Props</a>
+<ul>
+<li><a href="#-render-props">💪 Render props</a></li>
+</ul>
+</li>
+<li><a href="#compound-components">Compound Components</a>
+<ul>
+<li><a href="#-compound-components">💪 Compound components</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#additional-topics">Additional topics</a>
 <ul>
 <li><a href="#security-in-react">Security in React</a></li>
 <li><a href="#testing-in-react-applications">Testing in React applications</a></li>
-<li><a href="#common-problems">Common problems</a></li>
 </ul>
 </li>
 </ul>
@@ -163,32 +189,195 @@
 <ul>
 <li>Open <code>src/exercises/02-fix-the-rule-breaks/FixTheRuleBreaks.tsx</code></li>
 <li>Find all the places where one of React's rules is broken</li>
-<li><strong>Before fixing it</strong> try to think of a situation in which this rule break would cause problems</li>
+<li><strong>Before fixing it</strong> try to create a situation in which this rule break would cause problems</li>
 <li>Fix the rule break</li>
 </ul>
 <h4 id="state-in-react">State in React</h4>
+<p><strong>Why does a React component re-render?</strong></p>
 <ul>
-<li>one source (URL, state, localstorage, etc.)</li>
+<li>Every render cycle (after the very first) starts with a state change.</li>
+<li>useState and useReducer are the two way, we can define a state in React, that can trigger a re-render.</li>
+</ul>
+<h5 id="-03-impossible-state">💪 03 Impossible state</h5>
+<p><strong>Part 1</strong></p>
+<ul>
+<li>Open <code>src/exercises/03-impossible-state/ImpossibleState.tsx</code></li>
+<li>Define two states: <code>username</code> (initialized with an empty string) and <code>isValid</code> (initialized with <code>false</code>)</li>
+<li>Render an input field for the current username</li>
+<li>Render a button with the text &quot;save&quot;. The button should be disabled when isValid is false.</li>
+<li>When the username changes, update the isValid state: The username should be between 3 and 12 characters.</li>
+<li>Add a second button with the text &quot;reset&quot;, that resets the username state.</li>
+<li>Add a checkbox with the label &quot;Terms of service accepted&quot; and store the value of the checkbox in a third state (<code>areTermsAccepted</code>)</li>
+<li>Make sure that the form is only valid, when the terms are accepted and the username is between 3 and 12 characters long.</li>
+</ul>
+<p><strong>Do you see how cumbersome it is to make sure the isValid flag is in sync with the state of the form?</strong></p>
+<p><strong>Part 2</strong></p>
+<ul>
+<li>Try to refactor the component so that isValid is no longer a state. The thing to realize it, is that this state is completely dependant on the other two states in the form.</li>
+<li>Think about potential disadvantages of this approach.</li>
+</ul>
+<h5 id="-04-explicit-states">💪 04 Explicit states</h5>
+<ul>
+<li>Open <code>src/exercises/04-explicit-states/ExplicitStates.tsx</code></li>
+<li>Use the functions from <code>src/api/satellites.ts</code> to load all satellites.</li>
+<li>Display the names of all satellites in a list.</li>
+<li>Make sure to handle errors and loading states.</li>
 </ul>
 <h4 id="useeffect-usememo--usecallback">useEffect, useMemo &amp; useCallback</h4>
+<p><strong>What is useEffect for?</strong></p>
+<h5 id="-05-unnecessary-useeffects">💪 05 Unnecessary useEffects</h5>
+<ul>
+<li>Open <code>src/exercises/05-use-effect-in-forms/UseEffectInForms.tsx</code></li>
+<li>This component currently has some bugs:
+<ul>
+<li>When selecting a new satellite, the form fields should be populated with the values that are fetched from the server for this satellite.</li>
+<li>When creating a new satellite, the list on the left should update</li>
+<li>When updating the name of a satellite, the list on the left should update</li>
+<li>When switching to a new satellite, the old form state should be discarded</li>
+</ul>
+</li>
+</ul>
+<h5 id="-06-sync-with-the-outside-world">💪 06 Sync with the outside world</h5>
+<ul>
+<li>Open <code>src/exercises/06-sync-with-the-outside-world/SyncWithTheOutsideWorld.tsx</code></li>
+<li>Use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver">ResizeObserver-API</a> to display the current size (width and height) of the textarea below the heading. When you use the resize handle on the textarea, the numbers should update.</li>
+<li>Add a button that resets the size of the textarea (the numbers below the heading should update accordingly)</li>
+<li>Try to abstract the logic into a reusable custom hook <code>useElementDimensions</code></li>
+</ul>
+<h5 id="-07-fighting-dependencies">💪 07 Fighting dependencies</h5>
+<ul>
+<li>Open <code>src/exercises/07-fighting-dependencies/FightingDependencies.tsx</code></li>
+<li>Implement another counter button: A button that displays a number, and whenever you click the button, the number increments</li>
+<li>Below the button, a second counter should be displayed, that automatically increments every 2 seconds by the amount, that is currently displayed on the first button. (When the button shows a 10, the second counter increments by 10 every 2 seconds).</li>
+<li>Try to abstract the interval logic into a reusable custom hook <code>useInterval(intervalCallback: () =&gt; void, intervalDelay: number)</code></li>
+</ul>
 <h4 id="imperative-apis-in-react">Imperative APIs in React</h4>
+<ul>
+<li>React is declarative by default: Data gets passed around and the UI automatically follows</li>
+<li>The DOM is mainly imperative: createElement, appendChild, scrollIntoView()</li>
+<li>React normally bridges that gap for us for the most part...</li>
+<li>For the cases where it does not, there are escape hatches.</li>
+</ul>
+<h5 id="-imperative-apis">💪 Imperative APIs</h5>
+<ul>
+<li>Open <code>src/exercises/08-imperative-apis/ImperativeAPIs.tsx</code></li>
+<li>Use <code>useRef</code> to get a reference to the input and the list element (you can check <code>src/exercises/06-sync-with-the-outside-world/SyncWithTheOutsideWorld.tsx</code> as a guidance on how to type useRef)</li>
+<li>When clicking on the &quot;focus input&quot; button, the textbox should be focussed</li>
+<li>When clicking on the &quot;Scoll to element&quot; button, the list should scroll to the n-th element, depending on the current content of the textbox. If a user enters 50 and clicks the scroll button, the 50th li element should be scrolled into the view.</li>
+<li>Try to think of more scenarios where imperative APIs may be better than a declarative approach.</li>
+</ul>
+<p><strong>Optional part 2</strong></p>
+<ul>
+<li>Read the documentation of <a href="https://beta.reactjs.org/reference/react/useImperativeHandle">useImperativeHandle</a></li>
+<li>Extract the list (only the list, none of the buttons or inputs) into a separate component (<code>UserList</code>), where a ref can be attached to imperatively call <code>scrollToElement(index: number)</code></li>
+</ul>
 <h3 id="component-patterns">Component Patterns</h3>
+<p>When designing components, you have to pick 2 out of the 3 following facets:
+<img src="src/assets/component-spectrum.png" alt="The spectrum of component APIs"></p>
+<p><strong>Note:</strong> Nothing is inherently wrong with any spot of this triangle, it depends on your goals and circumstances.</p>
+<p>Moving around within this triangle is done by managing decisions:</p>
+<p><img src="src/assets/component-decisions.png" alt="Decisions within a component"></p>
+<h4 id="the-children-prop-or-jsx-as-props">The children prop or JSX as props</h4>
+<p><strong>Deciding what contents should be rendered within a component</strong></p>
+<h5 id="-layout-components">💪 Layout-components</h5>
+<p><strong>Part 1</strong></p>
+<ul>
+<li>Open <code>src/exercises/09-layout-components/LayoutComponents.tsx</code>.</li>
+<li>Build a new component <code>PageContent</code>, the renders a horizontally centered div with a max width of 700px.</li>
+<li>The PageContent component should not decide what is rendered within that component, but should simply render its children. The types for the children prop can be define like this: <code>function Test(props: { children: ReactNode }) {...}</code></li>
+<li>Render the heading &quot;Layout Components&quot; within a PageComponent tag.</li>
+</ul>
+<p><strong>Part 2</strong></p>
+<ul>
+<li>Build a new component <code>ContentWithSidebar</code>. This accepts to props: <code>sidebarContent</code> and <code>mainContent</code>, both <code>ReactNode</code>s.</li>
+<li>The ContentWithSidebar component should render the sidebar content on the left, and next to it, the main content.</li>
+<li>Use the ContentWithSidebar component in <code>LayoutComponents</code></li>
+</ul>
+<p><strong>Part 3</strong></p>
+<ul>
+<li>Add an <code>&lt;input type=&quot;range&quot; /&gt;</code> to the ContentWithSidebar component. Whenever users change this range slider, the width of the sidebar should adjust on the fly. Use the min and max prop on the input to define that the slide picks values between 100 and 400.</li>
+<li>Try to figure out, how often the mainContent is being rerendered, when users adjust the slide value.</li>
+</ul>
 <h4 id="render-props">Render Props</h4>
+<ul>
+<li>We were now able to move out the decision what to render.</li>
+<li>However, sometimes, the rendered content needs to access data from the wrapper component.</li>
+<li>Additionally, we now realized, that we can pass around JSX like any other piece of data.</li>
+</ul>
+<p><strong>Render props: Returning JSX from functions</strong></p>
+<h5 id="-render-props">💪 Render props</h5>
+<ul>
+<li>Open <code>src/exercises/10-render-props/RenderProps.tsx</code></li>
+<li>Copy over the solution from the previous task.</li>
+<li>Adapt the solution so that you can display the width of the sidebar within the sidebar content, by changing the prop definition from <code>sidebarContent: ReactNode</code> to <code>renderSidebar: (width: number) =&gt; ReactNode</code></li>
+<li>Now, try to find out, how many times the sidebar content rerenders when users adjust the width of the sidebar with the slider.</li>
+</ul>
+<p><strong>Optional Part 2 (involves TypeScript generics)</strong></p>
+<ul>
+<li>Define a new component <code>List</code></li>
+<li>The list expects a prop <code>items</code> which is a list of any data type (use a generic type parameter to capture this data type: <code>function List&lt;TItem&gt;(props: { items: TItem[] }) {...}</code>)</li>
+<li>Within the list, render a <code>ul</code> and within that, loop over the passed items and use a render prop (<code>eg. renderItem</code>) to determine the content that needs to be rendered for the given item.</li>
+</ul>
 <h4 id="compound-components">Compound Components</h4>
-<h4 id="the-children-prop">The children prop</h4>
+<ul>
+<li>We were now able to pass data from our library component ContentWithSidebar to our application-level component.</li>
+<li>This <strong>can</strong> have a couple of downsides:
+<ul>
+<li>Performance: Every state change in the library component triggers a re-render of the application component.</li>
+<li>Effort: Passing data down multiple levels this way can become tedious.</li>
+<li>Error-Prone: When other library components need access to this data, application code needs to pass around the data which can be forgotten.</li>
+</ul>
+</li>
+</ul>
+<p>To mitigate those, build component components: One conceptual component, that is split into multiple React-components but are still connected internally via React-Context.</p>
+<pre><code class="language-tsx"><span class="hljs-comment">// Library</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">CounterContext</span> = createContext&lt;{ <span class="hljs-attr">counter</span>: number } | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">CounterButton</span>(<span class="hljs-params">props: { children: ReactNode }</span>) {
+  <span class="hljs-keyword">const</span> [counter, setCounter] = <span class="hljs-title function_">useState</span>(<span class="hljs-number">0</span>);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCounter(counter + 1)}&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">CounterContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">counter</span> }}&gt;</span>
+        {props.children}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">CounterContext.Provider</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useCounter</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> counterValue = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">CounterContext</span>);
+  <span class="hljs-keyword">if</span> (!counterValue) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;No CounterContext.Provider found.&quot;</span>);
+  }
+
+  <span class="hljs-keyword">return</span> counterValue.<span class="hljs-property">counter</span>;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">CounterDisplay</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> counter = <span class="hljs-title function_">useCounter</span>();
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>{counter}<span class="hljs-tag">&lt;/&gt;</span></span>;
+}
+
+<span class="hljs-comment">// App code:</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">CounterButton</span>&gt;</span>
+      The current count is at <span class="hljs-tag">&lt;<span class="hljs-name">CounterDisplay</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">CounterButton</span>&gt;</span></span>
+  );
+}
+</code></pre>
+<h5 id="-compound-components">💪 Compound components</h5>
+<ul>
+<li>Start with your solution from <code>src/exercises/09-layout-components/LayoutComponents.tsx</code></li>
+<li>Define a new component <code>SidebarWidth</code> that displays the sidebar width of the nearest ContentWithSidebar component (define and use a ReactContext for this).</li>
+<li>Use your SidebarWidth component, to render the width of the sidebar.</li>
+<li>Check how often the rest of your sidebar content re-renders with this approach.</li>
+</ul>
 <h3 id="additional-topics">Additional topics</h3>
 <h4 id="security-in-react">Security in React</h4>
 <h4 id="testing-in-react-applications">Testing in React applications</h4>
-<h4 id="common-problems">Common problems</h4>
-<ul>
-<li>Too many states</li>
-<li>Too many useEffects</li>
-<li>Missing cleanups</li>
-<li>Missing dependencies</li>
-<li>Mutations of state</li>
-<li>Side effects in render</li>
-<li>Error-case not handled</li>
-</ul>
 <link rel="stylesheet" href="./README.css">
 <script src="./README.js"></script>
 
