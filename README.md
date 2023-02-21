@@ -100,7 +100,7 @@ Goal: Understand React instead of just using React
 #### The rules of React
 
 - Render functions must be pure
-- Everything created connection to the outside world must be destroyed at some point in time
+- Every created connection to the outside world must be destroyed at some point in time
 - Don't update data, replace it (immutable updates)
 
 ##### 💪 02 Fix the rule breaks
@@ -139,9 +139,14 @@ Goal: Understand React instead of just using React
 
 ##### 💪 04 Explicit states
 
+**Part 1**
+
 - Open `src/exercises/04-explicit-states/ExplicitStates.tsx`
 - Use the functions from `src/api/satellites.ts` to load all satellites.
 - Display the names of all satellites in a list.
+
+**Part 2**
+
 - Make sure to handle errors and loading states.
 
 #### useEffect, useMemo & useCallback
@@ -156,6 +161,7 @@ Goal: Understand React instead of just using React
   - When creating a new satellite, the list on the left should update
   - When updating the name of a satellite, the list on the left should update
   - When switching to a new satellite, the old form state should be discarded
+- Fix them! :)
 
 ##### 💪 06 Sync with the outside world
 
