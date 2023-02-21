@@ -60,6 +60,8 @@
   - [eslint](https://eslint.org/) - No checking of codestyle, formatting, and anything TypeScript already checks
 - Testing:
   - [Vitest](https://vitest.dev/) - like jest but integrates with vite and is much faster
+  - [React Testing library](https://testing-library.com/docs/react-testing-library/intro/)
+  - [Mock Service Worker (msw)](https://mswjs.io/)
 
 ## Topics
 
