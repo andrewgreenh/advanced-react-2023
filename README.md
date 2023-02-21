@@ -19,17 +19,17 @@
       - [💪 06 Sync with the outside world](#-06-sync-with-the-outside-world)
       - [💪 07 Fighting dependencies](#-07-fighting-dependencies)
     - [Imperative APIs in React](#imperative-apis-in-react)
-      - [💪 Imperative APIs](#-imperative-apis)
+      - [💪 08 Imperative APIs](#-08-imperative-apis)
   - [Component Patterns](#component-patterns)
     - [The children prop or JSX as props](#the-children-prop-or-jsx-as-props)
-      - [💪 Layout-components](#-layout-components)
+      - [💪 09 Layout-components](#-09-layout-components)
     - [Render Props](#render-props)
-      - [💪 Render props](#-render-props)
+      - [💪 10 Render props](#-10-render-props)
     - [Compound Components](#compound-components)
-      - [💪 Compound components](#-compound-components)
+      - [💪 11 Compound components](#-11-compound-components)
   - [Additional topics](#additional-topics)
     - [Security in React](#security-in-react)
-    - [Testing in React applications](#testing-in-react-applications)
+    - [💪 12 Testing in React applications](#-12-testing-in-react-applications)
 
 ## Introduction
 
@@ -176,7 +176,7 @@ Goal: Understand React instead of just using React
 - React normally bridges that gap for us for the most part...
 - For the cases where it does not, there are escape hatches.
 
-##### 💪 Imperative APIs
+##### 💪 08 Imperative APIs
 
 - Open `src/exercises/08-imperative-apis/ImperativeAPIs.tsx`
 - Use `useRef` to get a reference to the input and the list element (you can check `src/exercises/06-sync-with-the-outside-world/SyncWithTheOutsideWorld.tsx` as a guidance on how to type useRef)
@@ -204,7 +204,7 @@ Moving around within this triangle is done by managing decisions:
 
 **Deciding what contents should be rendered within a component**
 
-##### 💪 Layout-components
+##### 💪 09 Layout-components
 
 **Part 1**
 
@@ -232,7 +232,7 @@ Moving around within this triangle is done by managing decisions:
 
 **Render props: Returning JSX from functions**
 
-##### 💪 Render props
+##### 💪 10 Render props
 
 - Open `src/exercises/10-render-props/RenderProps.tsx`
 - Copy over the solution from the previous task.
@@ -295,7 +295,7 @@ function App() {
 }
 ```
 
-##### 💪 Compound components
+##### 💪 11 Compound components
 
 - Start with your solution from `src/exercises/09-layout-components/LayoutComponents.tsx`
 - Define a new component `SidebarWidth` that displays the sidebar width of the nearest ContentWithSidebar component (define and use a ReactContext for this).
@@ -306,7 +306,29 @@ function App() {
 
 #### Security in React
 
-#### Testing in React applications
+#### 💪 12 Testing in React applications
+
+**We are using vitest** in this project. It has mostly the same APIs as Jest but is much faster and reuses `vite.config.ts`.
+
+- Open `src/exercises/12-testing-in-react-applications/TestingInReactApplications.tsx` and the test file directly next to it.
+- Run `npx vitest` in a terminal to start the test runner vitest in watch mode.
+
+**Part 1**: Unit tests
+
+- Extract the main logic out of `FizzBuzzButton` and export it as a function
+- Write test cases for that new function that checks the following properties:
+  - It should return the fizzValue, a space and the buzzValue for numbers that are divisible by 3 and 5
+  - It should return the fizzValue for numbers divisible by 3
+  - It should return the buzzValue for numbers divisible by 5
+  - It should return the number for all other cases.
+
+**Part 2**: Component tests
+
+- Use the documentation for [React testing library](https://testing-library.com/docs/react-testing-library/example-intro) to render the FizzBuzzButton component and check that it renders without errors and that it follows the fizz buzz rules.
+
+**Part 3**: Components with side effects
+
+- Use the same React testing library guide, together with [msw](https://mswjs.io/docs/), to test the `SatelliteList` component and check if it displays a loading indicator initially, if it displays an error message when the request fails, and if data is displayed if the request succeeds.
 
 <link rel="stylesheet" href="./README.css">
 <script src="./README.js"></script>

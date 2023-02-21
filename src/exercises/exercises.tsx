@@ -11,6 +11,7 @@ import { ImperativeAPIs } from "./08-imperative-apis/ImperativeAPIs";
 import { LayoutComponents } from "./09-layout-components/LayoutComponents";
 import { RenderProps } from "./10-render-props/RenderProps";
 import { CompoundComponents } from "./11-compound-components/CompoundComponents";
+import { TestingInReactApplications } from "./12-testing-in-react-applications/TestingInReactApplications";
 import { ExerciseWrapper } from "./ExerciseWrapper";
 
 export const exercises = defineExercises([
@@ -57,6 +58,10 @@ export const exercises = defineExercises([
   {
     title: "Compound Components",
     element: <CompoundComponents />,
+  },
+  {
+    title: "Testing in react applications",
+    element: <TestingInReactApplications />,
   },
 ]);
 

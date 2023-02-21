@@ -79,7 +79,7 @@
 </li>
 <li><a href="#imperative-apis-in-react">Imperative APIs in React</a>
 <ul>
-<li><a href="#-imperative-apis">💪 Imperative APIs</a></li>
+<li><a href="#-08-imperative-apis">💪 08 Imperative APIs</a></li>
 </ul>
 </li>
 </ul>
@@ -88,17 +88,17 @@
 <ul>
 <li><a href="#the-children-prop-or-jsx-as-props">The children prop or JSX as props</a>
 <ul>
-<li><a href="#-layout-components">💪 Layout-components</a></li>
+<li><a href="#-09-layout-components">💪 09 Layout-components</a></li>
 </ul>
 </li>
 <li><a href="#render-props">Render Props</a>
 <ul>
-<li><a href="#-render-props">💪 Render props</a></li>
+<li><a href="#-10-render-props">💪 10 Render props</a></li>
 </ul>
 </li>
 <li><a href="#compound-components">Compound Components</a>
 <ul>
-<li><a href="#-compound-components">💪 Compound components</a></li>
+<li><a href="#-11-compound-components">💪 11 Compound components</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +106,7 @@
 <li><a href="#additional-topics">Additional topics</a>
 <ul>
 <li><a href="#security-in-react">Security in React</a></li>
-<li><a href="#testing-in-react-applications">Testing in React applications</a></li>
+<li><a href="#-12-testing-in-react-applications">💪 12 Testing in React applications</a></li>
 </ul>
 </li>
 </ul>
@@ -258,7 +258,7 @@
 <li>React normally bridges that gap for us for the most part...</li>
 <li>For the cases where it does not, there are escape hatches.</li>
 </ul>
-<h5 id="-imperative-apis">💪 Imperative APIs</h5>
+<h5 id="-08-imperative-apis">💪 08 Imperative APIs</h5>
 <ul>
 <li>Open <code>src/exercises/08-imperative-apis/ImperativeAPIs.tsx</code></li>
 <li>Use <code>useRef</code> to get a reference to the input and the list element (you can check <code>src/exercises/06-sync-with-the-outside-world/SyncWithTheOutsideWorld.tsx</code> as a guidance on how to type useRef)</li>
@@ -279,7 +279,7 @@
 <p><img src="src/assets/component-decisions.png" alt="Decisions within a component"></p>
 <h4 id="the-children-prop-or-jsx-as-props">The children prop or JSX as props</h4>
 <p><strong>Deciding what contents should be rendered within a component</strong></p>
-<h5 id="-layout-components">💪 Layout-components</h5>
+<h5 id="-09-layout-components">💪 09 Layout-components</h5>
 <p><strong>Part 1</strong></p>
 <ul>
 <li>Open <code>src/exercises/09-layout-components/LayoutComponents.tsx</code>.</li>
@@ -305,7 +305,7 @@
 <li>Additionally, we now realized, that we can pass around JSX like any other piece of data.</li>
 </ul>
 <p><strong>Render props: Returning JSX from functions</strong></p>
-<h5 id="-render-props">💪 Render props</h5>
+<h5 id="-10-render-props">💪 10 Render props</h5>
 <ul>
 <li>Open <code>src/exercises/10-render-props/RenderProps.tsx</code></li>
 <li>Copy over the solution from the previous task.</li>
@@ -368,7 +368,7 @@
   );
 }
 </code></pre>
-<h5 id="-compound-components">💪 Compound components</h5>
+<h5 id="-11-compound-components">💪 11 Compound components</h5>
 <ul>
 <li>Start with your solution from <code>src/exercises/09-layout-components/LayoutComponents.tsx</code></li>
 <li>Define a new component <code>SidebarWidth</code> that displays the sidebar width of the nearest ContentWithSidebar component (define and use a ReactContext for this).</li>
@@ -377,7 +377,32 @@
 </ul>
 <h3 id="additional-topics">Additional topics</h3>
 <h4 id="security-in-react">Security in React</h4>
-<h4 id="testing-in-react-applications">Testing in React applications</h4>
+<h4 id="-12-testing-in-react-applications">💪 12 Testing in React applications</h4>
+<p><strong>We are using vitest</strong> in this project. It has mostly the same APIs as Jest but is much faster and reuses <code>vite.config.ts</code>.</p>
+<ul>
+<li>Open <code>src/exercises/12-testing-in-react-applications/TestingInReactApplications.tsx</code> and the test file directly next to it.</li>
+<li>Run <code>npx vitest</code> in a terminal to start the test runner vitest in watch mode.</li>
+</ul>
+<p><strong>Part 1</strong>: Unit tests</p>
+<ul>
+<li>Extract the main logic out of <code>FizzBuzzButton</code> and export it as a function</li>
+<li>Write test cases for that new function that checks the following properties:
+<ul>
+<li>It should return the fizzValue, a space and the buzzValue for numbers that are divisible by 3 and 5</li>
+<li>It should return the fizzValue for numbers divisible by 3</li>
+<li>It should return the buzzValue for numbers divisible by 5</li>
+<li>It should return the number for all other cases.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Part 2</strong>: Component tests</p>
+<ul>
+<li>Use the documentation for <a href="https://testing-library.com/docs/react-testing-library/example-intro">React testing library</a> to render the FizzBuzzButton component and check that it renders without errors and that it follows the fizz buzz rules.</li>
+</ul>
+<p><strong>Part 3</strong>: Components with side effects</p>
+<ul>
+<li>Use the same React testing library guide, together with <a href="https://mswjs.io/docs/">msw</a>, to test the <code>SatelliteList</code> component and check if it displays a loading indicator initially, if it displays an error message when the request fails, and if data is displayed if the request succeeds.</li>
+</ul>
 <link rel="stylesheet" href="./README.css">
 <script src="./README.js"></script>
 
