@@ -155,7 +155,7 @@ Goal: Understand React instead of just using React
 
 ##### 💪 05 Unnecessary useEffects
 
-- Open `src/exercises/05-use-effect-in-forms/UseEffectInForms.tsx`
+- Open `src/exercises/05-unnecessary-use-effects/UnnecessaryUseEffects.tsx`
 - This component currently has some bugs:
   - When selecting a new satellite, the form fields should be populated with the values that are fetched from the server for this satellite.
   - When creating a new satellite, the list on the left should update
