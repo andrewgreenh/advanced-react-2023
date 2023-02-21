@@ -81,7 +81,7 @@ Open `src/exercises/01-first-steps-with-typescript/FirstStepsWithTypeScript.tsx`
   - When clicking on the button, the counter should be incremented by 1
   - Display the current count on the button
 - Render the button in the FirstStepsWithTypeScript component.
-- Make sure, that `npm run test` run without any errors or warnings.
+- Make sure, that `npm run test` runs without any errors or warnings.
 
 **Part 2**
 
