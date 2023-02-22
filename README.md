@@ -153,6 +153,10 @@ Goal: Understand React instead of just using React
 
 **What is useEffect for?**
 
+- fetch data from backend when state A changes
+- update state A whenever state B changes
+- addEventListeners on the document or window etc.
+
 ##### 💪 05 Unnecessary useEffects
 
 - Open `src/exercises/05-unnecessary-use-effects/UnnecessaryUseEffects.tsx`
