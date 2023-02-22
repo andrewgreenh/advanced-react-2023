@@ -245,17 +245,25 @@
 <li>Fix them! :)</li>
 </ul>
 <h5 id="-06-sync-with-the-outside-world">💪 06 Sync with the outside world</h5>
+<p><strong>Part 1</strong></p>
 <ul>
 <li>Open <code>src/exercises/06-sync-with-the-outside-world/SyncWithTheOutsideWorld.tsx</code></li>
 <li>Use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver">ResizeObserver-API</a> to display the current size (width and height) of the textarea below the heading. When you use the resize handle on the textarea, the numbers should update.</li>
 <li>Add a button that resets the size of the textarea (the numbers below the heading should update accordingly)</li>
+</ul>
+<p><strong>Part 2</strong></p>
+<ul>
 <li>Try to abstract the logic into a reusable custom hook <code>useElementDimensions</code></li>
 </ul>
 <h5 id="-07-fighting-dependencies">💪 07 Fighting dependencies</h5>
+<p><strong>Part 1</strong></p>
 <ul>
 <li>Open <code>src/exercises/07-fighting-dependencies/FightingDependencies.tsx</code></li>
 <li>Implement another counter button: A button that displays a number, and whenever you click the button, the number increments</li>
 <li>Below the button, a second counter should be displayed, that automatically increments every 2 seconds by the amount, that is currently displayed on the first button. (When the button shows a 10, the second counter increments by 10 every 2 seconds).</li>
+</ul>
+<p><strong>Part 2</strong></p>
+<ul>
 <li>Try to abstract the interval logic into a reusable custom hook <code>useInterval(intervalCallback: () =&gt; void, intervalDelay: number)</code></li>
 </ul>
 <h4 id="imperative-apis-in-react">Imperative APIs in React</h4>
@@ -266,6 +274,7 @@
 <li>For the cases where it does not, there are escape hatches.</li>
 </ul>
 <h5 id="-08-imperative-apis">💪 08 Imperative APIs</h5>
+<p><strong>Part 1</strong></p>
 <ul>
 <li>Open <code>src/exercises/08-imperative-apis/ImperativeAPIs.tsx</code></li>
 <li>Use <code>useRef</code> to get a reference to the input and the list element (you can check <code>src/exercises/06-sync-with-the-outside-world/SyncWithTheOutsideWorld.tsx</code> as a guidance on how to type useRef)</li>
@@ -376,11 +385,16 @@
 }
 </code></pre>
 <h5 id="-11-compound-components">💪 11 Compound components</h5>
+<p><strong>Part1</strong></p>
 <ul>
 <li>Start with your solution from <code>src/exercises/09-layout-components/LayoutComponents.tsx</code></li>
 <li>Define a new component <code>SidebarWidth</code> that displays the sidebar width of the nearest ContentWithSidebar component (define and use a ReactContext for this).</li>
 <li>Use your SidebarWidth component, to render the width of the sidebar.</li>
 <li>Check how often the rest of your sidebar content re-renders with this approach.</li>
+</ul>
+<p><strong>Part2</strong></p>
+<ul>
+<li>Try to find examples in libraries that you have used in your proejcts, that apply this pattern.</li>
 </ul>
 <h3 id="additional-topics">Additional topics</h3>
 <h4 id="security-in-react">Security in React</h4>

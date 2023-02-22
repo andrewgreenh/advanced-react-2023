@@ -165,16 +165,26 @@ Goal: Understand React instead of just using React
 
 ##### 💪 06 Sync with the outside world
 
+**Part 1**
+
 - Open `src/exercises/06-sync-with-the-outside-world/SyncWithTheOutsideWorld.tsx`
 - Use the [ResizeObserver-API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) to display the current size (width and height) of the textarea below the heading. When you use the resize handle on the textarea, the numbers should update.
 - Add a button that resets the size of the textarea (the numbers below the heading should update accordingly)
+
+**Part 2**
+
 - Try to abstract the logic into a reusable custom hook `useElementDimensions`
 
 ##### 💪 07 Fighting dependencies
 
+**Part 1**
+
 - Open `src/exercises/07-fighting-dependencies/FightingDependencies.tsx`
 - Implement another counter button: A button that displays a number, and whenever you click the button, the number increments
 - Below the button, a second counter should be displayed, that automatically increments every 2 seconds by the amount, that is currently displayed on the first button. (When the button shows a 10, the second counter increments by 10 every 2 seconds).
+
+**Part 2**
+
 - Try to abstract the interval logic into a reusable custom hook `useInterval(intervalCallback: () => void, intervalDelay: number)`
 
 #### Imperative APIs in React
@@ -185,6 +195,8 @@ Goal: Understand React instead of just using React
 - For the cases where it does not, there are escape hatches.
 
 ##### 💪 08 Imperative APIs
+
+**Part 1**
 
 - Open `src/exercises/08-imperative-apis/ImperativeAPIs.tsx`
 - Use `useRef` to get a reference to the input and the list element (you can check `src/exercises/06-sync-with-the-outside-world/SyncWithTheOutsideWorld.tsx` as a guidance on how to type useRef)
@@ -305,10 +317,16 @@ function App() {
 
 ##### 💪 11 Compound components
 
+**Part1**
+
 - Start with your solution from `src/exercises/09-layout-components/LayoutComponents.tsx`
 - Define a new component `SidebarWidth` that displays the sidebar width of the nearest ContentWithSidebar component (define and use a ReactContext for this).
 - Use your SidebarWidth component, to render the width of the sidebar.
 - Check how often the rest of your sidebar content re-renders with this approach.
+
+**Part2**
+
+- Try to find examples in libraries that you have used in your proejcts, that apply this pattern.
 
 ### Additional topics
 
