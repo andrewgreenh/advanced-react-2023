@@ -229,8 +229,8 @@ Moving around within this triangle is done by managing decisions:
 **Part 1**
 
 - Open `src/exercises/09-layout-components/LayoutComponents.tsx`.
-- Build a new component `PageContent`, the renders a horizontally centered div with a max width of 700px.
-- The PageContent component should not decide what is rendered within that component, but should simply render its children. The types for the children prop can be define like this: `function Test(props: { children: ReactNode }) {...}`
+- Build a new component `PageContent`, that renders a horizontally centered div with a max width of 700px.
+- The PageContent component should not decide what is rendered within that component, but should simply render its children. The types for the children prop can be defined like this: `function Test(props: { children: ReactNode }) {...}`
 - Render the heading "Layout Components" within a PageComponent tag.
 
 **Part 2**
@@ -243,6 +243,11 @@ Moving around within this triangle is done by managing decisions:
 
 - Add an `<input type="range" />` to the ContentWithSidebar component. Whenever users change this range slider, the width of the sidebar should adjust on the fly. Use the min and max prop on the input to define that the slide picks values between 100 and 400.
 - Try to figure out, how often the mainContent is being rerendered, when users adjust the slide value.
+
+**Optional part 4**
+
+- Render a border between the sidebar and the main content
+- Allow users to change the position of the border (and thus the width of the sidebar) via drag and drop.
 
 #### Render Props
 
@@ -326,7 +331,7 @@ function App() {
 
 **Part2**
 
-- Try to find examples in libraries that you have used in your proejcts, that apply this pattern.
+- Try to find examples in libraries that you have used in your projects, that apply this pattern.
 
 ### Additional topics
 

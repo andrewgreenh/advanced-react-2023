@@ -299,8 +299,8 @@
 <p><strong>Part 1</strong></p>
 <ul>
 <li>Open <code>src/exercises/09-layout-components/LayoutComponents.tsx</code>.</li>
-<li>Build a new component <code>PageContent</code>, the renders a horizontally centered div with a max width of 700px.</li>
-<li>The PageContent component should not decide what is rendered within that component, but should simply render its children. The types for the children prop can be define like this: <code>function Test(props: { children: ReactNode }) {...}</code></li>
+<li>Build a new component <code>PageContent</code>, that renders a horizontally centered div with a max width of 700px.</li>
+<li>The PageContent component should not decide what is rendered within that component, but should simply render its children. The types for the children prop can be defined like this: <code>function Test(props: { children: ReactNode }) {...}</code></li>
 <li>Render the heading &quot;Layout Components&quot; within a PageComponent tag.</li>
 </ul>
 <p><strong>Part 2</strong></p>
@@ -313,6 +313,11 @@
 <ul>
 <li>Add an <code>&lt;input type=&quot;range&quot; /&gt;</code> to the ContentWithSidebar component. Whenever users change this range slider, the width of the sidebar should adjust on the fly. Use the min and max prop on the input to define that the slide picks values between 100 and 400.</li>
 <li>Try to figure out, how often the mainContent is being rerendered, when users adjust the slide value.</li>
+</ul>
+<p><strong>Optional part 4</strong></p>
+<ul>
+<li>Render a border between the sidebar and the main content</li>
+<li>Allow users to change the position of the border (and thus the width of the sidebar) via drag and drop.</li>
 </ul>
 <h4 id="render-props">Render Props</h4>
 <ul>
@@ -394,7 +399,7 @@
 </ul>
 <p><strong>Part2</strong></p>
 <ul>
-<li>Try to find examples in libraries that you have used in your proejcts, that apply this pattern.</li>
+<li>Try to find examples in libraries that you have used in your projects, that apply this pattern.</li>
 </ul>
 <h3 id="additional-topics">Additional topics</h3>
 <h4 id="security-in-react">Security in React</h4>
