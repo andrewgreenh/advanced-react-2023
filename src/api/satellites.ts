@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3002/satellites";
+export const baseUrl = "http://localhost:3002/satellites";
 
 export type Satellite = {
   id: string;
