@@ -153,6 +153,19 @@ Goal: Understand React instead of just using React
 
 **What is useEffect for?**
 
+- fetching data
+- updating data
+- updating other states
+- component initialization
+
+  - fetching data
+  - getting stuff from the DOM
+  - Adding stuff to the DOM (e.g. event listeners)
+
+- retrieving data from outside of react
+- Pushing data out of the react world
+- (syncing data within React)
+
 ##### 💪 05 Unnecessary useEffects
 
 **Part 1**
