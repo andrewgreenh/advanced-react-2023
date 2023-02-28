@@ -1,46 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { Satellite, satellitesApi } from "../../api/satellites";
 
+type RequestState =
+  | { type: "loading" }
+  | { type: "error"; err: string }
+  | { type: "success"; satellites: Satellite[] };
+
 export function UnnecessaryUseEffects() {
   const [selectedSatelliteId, setSelectedSatelliteId] = useState<string | null>(
     null
   );
-  const [loadedSatellite, setLoadedSatellite] = useState<Satellite | null>(
-    null
-  );
 
-  useEffect(() => {
-    if (!selectedSatelliteId) {
-      setLoadedSatellite(null);
-      return;
-    }
-    satellitesApi.get(selectedSatelliteId).then(setLoadedSatellite);
-  }, [selectedSatelliteId]);
-
-  return (
-    <div className="flex items-start">
-      <div className="flex-0 w-80">
-        <SatellitesList
-          selectedSatelliteId={selectedSatelliteId}
-          setSelectedSatelliteId={setSelectedSatelliteId}
-        />
-      </div>
-      <div>
-        <SatelliteDetails satellite={loadedSatellite} />
-      </div>
-    </div>
-  );
-}
-
-function SatellitesList(props: {
-  selectedSatelliteId: string | null;
-  setSelectedSatelliteId: (id: string | null) => void;
-}) {
-  const [requestState, setRequestState] = useState<
-    | { type: "loading" }
-    | { type: "error"; err: string }
-    | { type: "success"; satellites: Satellite[] }
-  >({ type: "loading" });
+  const [requestState, setRequestState] = useState<RequestState>({
+    type: "loading",
+  });
 
   const refetch = useCallback(() => {
     setRequestState({ type: "loading" });
@@ -57,6 +30,35 @@ function SatellitesList(props: {
   useEffect(() => {
     refetch();
   }, [refetch]);
+
+  return (
+    <div className="flex items-start">
+      <div className="flex-0 w-80">
+        <SatellitesList
+          refetch={refetch}
+          requestState={requestState}
+          selectedSatelliteId={selectedSatelliteId}
+          setSelectedSatelliteId={setSelectedSatelliteId}
+        />
+      </div>
+      <div>
+        <SatelliteDetails
+          key={selectedSatelliteId}
+          selectedSatelliteId={selectedSatelliteId}
+          onSave={() => refetch()}
+        />
+      </div>
+    </div>
+  );
+}
+
+function SatellitesList(props: {
+  requestState: RequestState;
+  selectedSatelliteId: string | null;
+  setSelectedSatelliteId: (id: string | null) => void;
+  refetch: () => void;
+}) {
+  const { requestState, refetch } = props;
 
   if (requestState.type === "loading") {
     return <p>Loading...</p>;
@@ -95,15 +97,40 @@ function SatellitesList(props: {
   );
 }
 
-function SatelliteDetails(props: { satellite: Satellite | null }) {
+function SatelliteDetails(props: {
+  selectedSatelliteId: string | null;
+  onSave: () => void;
+}) {
   const [formState, setFormState] = useState({
-    name: props.satellite?.name ?? "",
-    reverse: !!props.satellite?.reverse,
+    name: "",
+    reverse: false,
   });
+
+  const [loadedSatellite, setLoadedSatellite] = useState<Satellite | null>(
+    null
+  );
+
+  useEffect(() => {
+    if (!props.selectedSatelliteId) {
+      setLoadedSatellite(null);
+      return;
+    }
+    satellitesApi.get(props.selectedSatelliteId).then((loadedSatellite) => {
+      setLoadedSatellite(loadedSatellite);
+      setFormState({
+        name: loadedSatellite.name,
+        reverse: loadedSatellite.reverse,
+      });
+    });
+  }, [props.selectedSatelliteId]);
+
+  if (props.selectedSatelliteId && !loadedSatellite) return <p>Loading</p>;
 
   return (
     <div className="px-4">
-      <h2>{props.satellite ? props.satellite.name : "Neuer Satellite"}</h2>
+      <h2>
+        {props.selectedSatelliteId ? loadedSatellite?.name : "Neuer Satellite"}
+      </h2>
       <label>
         Name{" "}
         <input
@@ -127,14 +154,22 @@ function SatelliteDetails(props: { satellite: Satellite | null }) {
       <br />
       <button
         onClick={() => {
-          if (props.satellite) {
-            satellitesApi.update({ ...props.satellite, ...formState });
+          if (props.selectedSatelliteId && loadedSatellite) {
+            satellitesApi
+              .update({
+                ...loadedSatellite,
+                ...formState,
+                id: props.selectedSatelliteId,
+              })
+              .then(props.onSave);
           } else {
-            satellitesApi.create({
-              ...formState,
-              angle: 0,
-              type: "communication",
-            });
+            satellitesApi
+              .create({
+                ...formState,
+                angle: 0,
+                type: "communication",
+              })
+              .then(props.onSave);
           }
         }}
       >

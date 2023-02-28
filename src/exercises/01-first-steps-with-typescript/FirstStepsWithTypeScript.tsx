@@ -13,7 +13,7 @@ export function FirstStepsWithTypeScript() {
   );
 }
 
-console.log(FirstStepsWithTypeScript() === FirstStepsWithTypeScript());
+// console.log(FirstStepsWithTypeScript() === FirstStepsWithTypeScript());
 
 type SimpleCounterButtonProps = ComponentProps<"button"> & {
   incrementBy: number;
