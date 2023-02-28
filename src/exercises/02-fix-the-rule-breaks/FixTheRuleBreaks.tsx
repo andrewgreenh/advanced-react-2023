@@ -3,27 +3,48 @@ import { useEffect, useState } from "react";
 
 export function FixTheRuleBreaks() {
   const [initialUsers, setInitialUsers] = useState<User[] | null>(null);
+  const [x, setX] = useState(0);
 
-  if (!initialUsers) {
-    loadUsers().then((users) => setInitialUsers(users));
-  }
+  useEffect(() => {
+    let cancelled = false;
+    loadUsers().then((users) => {
+      if (cancelled) return;
+      setInitialUsers(users);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  if (!initialUsers) return <p>Loading...</p>;
+  if (!initialUsers)
+    return (
+      <p>
+        <button onClick={() => setX(x + 1)}>{x}</button>Loading...
+      </p>
+    );
 
-  return <UserManagement initialUsers={initialUsers} />;
+  return (
+    <>
+      <button onClick={() => setX(x + 1)}>{x}</button>
+      <UserManagement initialUsers={initialUsers} />
+    </>
+  );
 }
 
 function UserManagement(props: { initialUsers: User[] }) {
   const [users, setUsers] = useState(props.initialUsers);
 
   useEffect(() => {
-    document.addEventListener("click", () => {
-      setUsers((users) => faker.helpers.shuffle([...users]));
-    });
+    function handleClick() {
+      // setUsers((users) => faker.helpers.shuffle([...users]));
+    }
+    document.addEventListener("click", handleClick);
+
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   function addUser() {
-    users.push(randomUser());
+    setUsers([...users, randomUser()]);
   }
 
   function deleteUser(user: User) {
@@ -35,11 +56,9 @@ function UserManagement(props: { initialUsers: User[] }) {
 
     if (!userToBeRenamed) return;
 
-    userToBeRenamed.name = faker.name.fullName();
+    const newUser = { ...userToBeRenamed, name: faker.name.fullName() };
 
-    const newUsers = users.map((u) =>
-      u.id === userToBeRenamed.id ? userToBeRenamed : u
-    );
+    const newUsers = users.map((u) => (u.id === newUser.id ? newUser : u));
 
     setUsers(newUsers);
   }
@@ -48,8 +67,8 @@ function UserManagement(props: { initialUsers: User[] }) {
     <>
       <button onClick={addUser}>Add user</button>
       <ul>
-        {users.map((user, index) => (
-          <li key={index} className="flex gap-4">
+        {users.map((user) => (
+          <li key={user.id} className="flex gap-4">
             <User user={user} />
 
             <button
@@ -69,7 +88,14 @@ function UserManagement(props: { initialUsers: User[] }) {
 }
 
 function User(props: { user: User }) {
-  return <span className="font-bold">{props.user.name}</span>;
+  // useEffect(() => {
+  //   console.log(props.user, "changed");
+  // }, [props.user]);
+  return (
+    <span className="font-bold">
+      {props.user.name} <input />
+    </span>
+  );
 }
 
 type User = {
