@@ -155,13 +155,20 @@ Goal: Understand React instead of just using React
 
 ##### 💪 05 Unnecessary useEffects
 
+**Part 1**
+
 - Open `src/exercises/05-unnecessary-use-effects/UnnecessaryUseEffects.tsx`
 - This component currently has some bugs:
   - When selecting a new satellite, the form fields should be populated with the values that are fetched from the server for this satellite.
   - When creating a new satellite, the list on the left should update
   - When updating the name of a satellite, the list on the left should update
   - When switching to a new satellite, the old form state should be discarded
-- Fix them! :)
+- Befor you start into fixing them, draw a component diagram and annotate all states and where they are used in this little part of the application.
+- Evaluate the compoment diagram and think of possible improvements
+
+**Optional Part 2**
+
+- Implement your new component architecture and fix all the bugs of the app.
 
 ##### 💪 06 Sync with the outside world
 
