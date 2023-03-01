@@ -11,21 +11,25 @@ export function TestingInReactApplications() {
   );
 }
 
+export function getFizzBuzz(
+  count: number,
+  fizzValue: string,
+  buzzValue: string
+) {
+  if (count % 3 === 0 && count % 5 === 0)
+    return [fizzValue, buzzValue].join(" ");
+  if (count % 3 === 0) return fizzValue;
+  if (count % 5 === 0) return buzzValue;
+  return count;
+}
+
 export function FizzBuzzButton(props: {
   fizzValue: string;
   buzzValue: string;
 }) {
   const [count, setCount] = useState(0);
 
-  function getFizzBuzz() {
-    if (count % 3 === 0 && count % 5 === 0)
-      return [props.fizzValue, props.buzzValue].join(" ");
-    if (count % 3 === 0) return props.fizzValue;
-    if (count % 5 === 0) return props.buzzValue;
-    return count;
-  }
-
-  const displayValue = getFizzBuzz();
+  const displayValue = getFizzBuzz(count, props.fizzValue, props.buzzValue);
 
   return (
     <span className="flex gap-4">
