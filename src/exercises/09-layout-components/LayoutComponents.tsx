@@ -3,7 +3,7 @@ import { ReactNode, useState } from "react";
 export function LayoutComponents() {
   return (
     <ContentWithSidebar
-      sidebarContent={SidebarContent()}
+      sidebarContent={<SidebarContent />}
       mainContent={<MainContent />}
     />
   );
